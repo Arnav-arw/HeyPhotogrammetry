@@ -13,6 +13,8 @@
 		6A62C9962982EC6E00AE812C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A62C9952982EC6E00AE812C /* Preview Assets.xcassets */; };
 		6A62C9A12982EC8E00AE812C /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A62C9A02982EC8E00AE812C /* InputView.swift */; };
 		6A62C9A42982ED3200AE812C /* AppViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A62C9A32982ED3200AE812C /* AppViewState.swift */; };
+		6A62C9A62982EFAB00AE812C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A62C9A52982EFAB00AE812C /* SettingsView.swift */; };
+		6A62C9A92982F10C00AE812C /* PhotogrametrySession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A62C9A82982F10C00AE812C /* PhotogrametrySession.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		6A62C9972982EC6E00AE812C /* HeyPhotogrammetry.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HeyPhotogrammetry.entitlements; sourceTree = "<group>"; };
 		6A62C9A02982EC8E00AE812C /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
 		6A62C9A32982ED3200AE812C /* AppViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewState.swift; sourceTree = "<group>"; };
+		6A62C9A52982EFAB00AE812C /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		6A62C9A82982F10C00AE812C /* PhotogrametrySession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotogrametrySession.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +62,7 @@
 			children = (
 				6A62C98E2982EC6D00AE812C /* HeyPhotogrammetryApp.swift */,
 				6A62C9902982EC6D00AE812C /* ContentView.swift */,
+				6A62C9A72982F0ED00AE812C /* Extensions */,
 				6A62C9A22982ED2600AE812C /* Models */,
 				6A62C99D2982EC7700AE812C /* Views */,
 				6A62C9922982EC6E00AE812C /* Assets.xcassets */,
@@ -79,6 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				6A62C9A02982EC8E00AE812C /* InputView.swift */,
+				6A62C9A52982EFAB00AE812C /* SettingsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -89,6 +95,14 @@
 				6A62C9A32982ED3200AE812C /* AppViewState.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		6A62C9A72982F0ED00AE812C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				6A62C9A82982F10C00AE812C /* PhotogrametrySession.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -161,6 +175,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A62C9A92982F10C00AE812C /* PhotogrametrySession.swift in Sources */,
+				6A62C9A62982EFAB00AE812C /* SettingsView.swift in Sources */,
 				6A62C9912982EC6D00AE812C /* ContentView.swift in Sources */,
 				6A62C98F2982EC6D00AE812C /* HeyPhotogrammetryApp.swift in Sources */,
 				6A62C9A12982EC8E00AE812C /* InputView.swift in Sources */,
