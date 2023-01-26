@@ -9,7 +9,9 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        InputView()
+        InputView(
+            AppViewState: Binding.constant(AppViewState.onInputView)
+        )
     }
 }
 

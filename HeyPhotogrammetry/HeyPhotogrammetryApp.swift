@@ -12,6 +12,10 @@ struct HeyPhotogrammetryApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .fixedSize()
+                .onAppear { NSWindow.allowsAutomaticWindowTabbing = false }
         }
+        .windowStyle(.hiddenTitleBar)
+        .windowResizability(.contentSize)
     }
 }
