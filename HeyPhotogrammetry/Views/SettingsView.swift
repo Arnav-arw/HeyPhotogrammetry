@@ -11,7 +11,7 @@ import RealityKit
 struct SettingsView: View {
     
     @Binding var appViewState: AppViewState
-    @ObservedObject var photogrammetryVM: PhotogrammetryViewModel
+    @ObservedObject var photogrammetryVM: PhotogrammetryDelegate
     
     var body: some View {
         VStack(alignment: .center, spacing: 15) {
@@ -92,7 +92,7 @@ struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
         SettingsView(
             appViewState: Binding.constant(AppViewState.onSettingsView),
-            photogrammetryVM: PhotogrammetryViewModel()
+            photogrammetryVM: PhotogrammetryDelegate()
         )
     }
 }

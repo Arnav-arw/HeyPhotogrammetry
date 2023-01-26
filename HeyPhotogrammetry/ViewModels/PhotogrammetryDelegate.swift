@@ -1,5 +1,5 @@
 //
-//  PhotogrammetryViewModel.swift
+//  PhotogrammetryDelegate.swift
 //  HeyPhotogrammetry
 //
 //  Created by Arnav Singhal on 26/01/23.
@@ -11,7 +11,7 @@ import UniformTypeIdentifiers
 import AppKit
 import RealityKit
 
-class PhotogrammetryViewModel: ObservableObject {
+class PhotogrammetryDelegate: ObservableObject {
     
     @Published var sessionRequestDetail: PhotogrammetrySession.Request.Detail = PhotogrammetrySession.Request.Detail()
     @Published var sessionConfiguration: PhotogrammetrySession.Configuration = PhotogrammetrySession.Configuration()

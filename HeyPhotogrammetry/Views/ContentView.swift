@@ -6,11 +6,12 @@
 //
 
 import SwiftUI
+import RealityKit
 
 struct ContentView: View {
     
     @State var appState = AppViewState.onInputView
-    @StateObject var photogrammetryVM = PhotogrammetryViewModel()
+    @StateObject var photogrammetryVM = PhotogrammetryDelegate()
     
     var body: some View {
         ZStack {
@@ -36,6 +37,7 @@ struct ContentView: View {
                 )
             }
         }
+        .animation(.spring(), value: appState)
     }
 }
 
