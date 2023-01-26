@@ -6,31 +6,93 @@
 //
 
 import SwiftUI
+import RealityKit
 
 struct SettingsView: View {
     
-    @Binding var AppViewState: AppViewState
-    
+    @Binding var appViewState: AppViewState
+    @ObservedObject var photogrammetryVM: PhotogrammetryViewModel
     
     var body: some View {
         VStack(alignment: .center, spacing: 15) {
             VStack(alignment: .leading, spacing: 5) {
                 Spacer()
-                Picker("Model Detail", selection: <#T##Binding<SelectionValue>#>) {
-                    ForEach() {
+                Picker("Model Detail", selection: $photogrammetryVM.sessionRequestDetail) {
+                    ForEach(PhotogrammetrySession.Request.Detail.allCases, id: \.self) {
                         Text($0)
-                            .tag(<#T##tag: Hashable##Hashable#>)
+                            .tag(PhotogrammetrySession.Request.Detail.init($0))
                     }
                 }
+                .pickerStyle(.menu)
+                .padding([.leading, .trailing], 15)
             }
+            .frame(width: 320)
+            .fixedSize()
+            .background(Color.gray.opacity(0.1))
+            .cornerRadius(8)
+            
+            VStack(alignment: .leading, spacing: 5) {
+                
+                Spacer()
+                HStack {
+                    Text("Object Masking")
+                    Spacer()
+                    Toggle("Object Masking", isOn: $photogrammetryVM.sessionConfiguration.isObjectMaskingEnabled)
+                        .toggleStyle(.switch)
+                        .labelsHidden()
+                }
+                .padding([.leading, .trailing], 15)
+                
+                Spacer()
+                Picker("Feature Sensitivity", selection: $photogrammetryVM.sessionConfiguration.featureSensitivity) {
+                    ForEach(PhotogrammetrySession.Configuration.FeatureSensitivity.allCases, id: \.self) {
+                        Text($0)
+                            .tag(PhotogrammetrySession.Configuration.FeatureSensitivity.init($0))
+                    }
+                }
+                .padding([.leading, .trailing], 15)
+                
+                Spacer()
+                Picker("Sample Ordering", selection: $photogrammetryVM.sessionConfiguration.sampleOrdering) {
+                    ForEach(PhotogrammetrySession.Configuration.SampleOrdering.allCases, id: \.self) {
+                        Text($0)
+                            .tag(PhotogrammetrySession.Configuration.SampleOrdering.init($0))
+                    }
+                }
+                .padding([.leading, .trailing], 15)
+            }
+            .pickerStyle(.segmented)
+            .frame(width: 320)
+            .fixedSize()
+            .background(Color.gray.opacity(0.1))
+            .cornerRadius(8)
+            
+            HStack {
+                Button {
+                    appViewState = AppViewState.onInputView
+                } label: {
+                    Text("Back")
+                }
+                Spacer()
+                Button {
+                    appViewState = AppViewState.onProcessingView
+                } label: {
+                    Text("Generate")
+                }
+            }
+            .frame(width: 320)
+            .fixedSize()
         }
+        .padding(.all, 20)
     }
 }
+
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
         SettingsView(
-            AppViewState: Binding.constant(AppViewState.onSettingsView)
+            appViewState: Binding.constant(AppViewState.onSettingsView),
+            photogrammetryVM: PhotogrammetryViewModel()
         )
     }
 }
