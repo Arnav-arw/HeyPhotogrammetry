@@ -9,7 +9,7 @@ import SwiftUI
 
 struct InputView: View {
     
-    @Binding var appViewState: AppViewState
+    @Binding var appViewState: ApplicationViewState
     @ObservedObject var photogrammetryVM: PhotogrammetryDelegate
     
     @State private var openFolderAlert: Bool = false
@@ -46,7 +46,7 @@ struct InputView: View {
 struct InputView_Previews: PreviewProvider {
     static var previews: some View {
         InputView(
-            appViewState: Binding.constant(AppViewState.onInputView),
+            appViewState: Binding.constant(ApplicationViewState.onInputView),
             photogrammetryVM: PhotogrammetryDelegate()
         )
     }

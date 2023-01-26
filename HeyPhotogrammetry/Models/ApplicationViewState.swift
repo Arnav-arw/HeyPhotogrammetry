@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum AppViewState {
+enum ApplicationViewState {
     case onInputView
     case onSettingsView
     case onProcessingView

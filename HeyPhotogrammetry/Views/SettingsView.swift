@@ -10,7 +10,7 @@ import RealityKit
 
 struct SettingsView: View {
     
-    @Binding var appViewState: AppViewState
+    @Binding var appViewState: ApplicationViewState
     @ObservedObject var photogrammetryVM: PhotogrammetryDelegate
     
     var body: some View {
@@ -69,13 +69,13 @@ struct SettingsView: View {
             
             HStack {
                 Button {
-                    appViewState = AppViewState.onInputView
+                    appViewState = ApplicationViewState.onInputView
                 } label: {
                     Text("Back")
                 }
                 Spacer()
                 Button {
-                    appViewState = AppViewState.onProcessingView
+                    appViewState = ApplicationViewState.onProcessingView
                 } label: {
                     Text("Generate")
                 }
@@ -91,7 +91,7 @@ struct SettingsView: View {
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
         SettingsView(
-            appViewState: Binding.constant(AppViewState.onSettingsView),
+            appViewState: Binding.constant(ApplicationViewState.onSettingsView),
             photogrammetryVM: PhotogrammetryDelegate()
         )
     }

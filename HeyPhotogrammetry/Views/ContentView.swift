@@ -10,7 +10,7 @@ import RealityKit
 
 struct ContentView: View {
     
-    @State var appState = AppViewState.onInputView
+    @State var appState = ApplicationViewState.onInputView
     @StateObject var photogrammetryVM = PhotogrammetryDelegate()
     
     var body: some View {
