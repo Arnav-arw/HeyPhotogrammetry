@@ -8,10 +8,34 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State var appState = AppViewState.onInputView
+    @StateObject var photogrammetryVM = PhotogrammetryViewModel()
+    
     var body: some View {
-        InputView(
-            AppViewState: Binding.constant(AppViewState.onInputView)
-        )
+        ZStack {
+            switch appState {
+            case .onInputView:
+                InputView(
+                    appViewState: $appState,
+                    photogrammetryVM: photogrammetryVM
+                )
+            case .onSettingsView:
+                SettingsView(
+                    appViewState: $appState,
+                    photogrammetryVM: photogrammetryVM
+                )
+//            case .onProcessingView:
+//                <#code#>
+//            case .onExportView:
+//                <#code#>
+            default:
+                InputView(
+                    appViewState: $appState,
+                    photogrammetryVM: photogrammetryVM
+                )
+            }
+        }
     }
 }
 
