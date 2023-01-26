@@ -1,5 +1,5 @@
 //
-//  PhotogrametrySession.swift
+//  PhotogrammetrySession.swift
 //  HeyPhotogrammetry
 //
 //  Created by Arnav Singhal on 26/01/23.
