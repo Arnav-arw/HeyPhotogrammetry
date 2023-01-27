@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "62B1C9B22928E095009F3EE3"
-               BuildableName = "Photogrammetry.app"
+               BuildableName = "MyPhotogrammetry.app"
                BlueprintName = "Photogrammetry"
                ReferencedContainer = "container:Photogrammetry.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "62B1C9B22928E095009F3EE3"
-            BuildableName = "Photogrammetry.app"
+            BuildableName = "MyPhotogrammetry.app"
             BlueprintName = "Photogrammetry"
             ReferencedContainer = "container:Photogrammetry.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "62B1C9B22928E095009F3EE3"
-            BuildableName = "Photogrammetry.app"
+            BuildableName = "MyPhotogrammetry.app"
             BlueprintName = "Photogrammetry"
             ReferencedContainer = "container:Photogrammetry.xcodeproj">
          </BuildableReference>
