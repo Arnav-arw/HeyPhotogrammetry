@@ -2,13 +2,14 @@
 //  OnDropDelegate.swift
 //  Photogrammetry
 //
-//  Created by Arnav Singhal on 11/21/22.
+//  Created by Arnav Singhal on 27/01/23.
 //
 
 import UniformTypeIdentifiers
 import SwiftUI
 
 struct OnDropDelegate: DropDelegate {
+    
     @Binding var applicationViewState: ApplicationViewState
     @ObservedObject var photogrammetryDelegate: PhotogrammetryDelegate
     
@@ -26,7 +27,7 @@ struct OnDropDelegate: DropDelegate {
                     let itemUrl = NSURL(absoluteURLWithDataRepresentation: urlData, relativeTo: nil) as URL
                     if itemUrl.isDirectory == true {
                         photogrammetryDelegate.inputFolderUrl = itemUrl
-                        applicationViewState = .onSettingsView
+                        applicationViewState = .onConfigurationView
                     }
                 }
             }

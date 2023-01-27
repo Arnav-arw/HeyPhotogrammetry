@@ -1,6 +1,6 @@
 //
 //  ProcessingView.swift
-//  HeyPhotogrammetry
+//  Photogrammetry
 //
 //  Created by Arnav Singhal on 27/01/23.
 //
@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct ProcessingView: View {
-    
     @Binding var applicationViewState: ApplicationViewState
     @ObservedObject var photogrammetryDelegate: PhotogrammetryDelegate
     
@@ -19,31 +18,18 @@ struct ProcessingView: View {
     var body: some View {
         VStack (spacing: 15) {
             Spacer()
-            ZStack {
-                Image(systemName: "viewfinder")
-                    .font(.system(size: 100))
-                    .foregroundColor(Color.secondary.opacity(0.6))
-                Image(systemName: "scale.3d")
-                    .font(.system(size: 60))
-                    .foregroundColor(Color.secondary.opacity(0.8))
-
-                Group {
-                    Image(systemName: "gear.circle.fill")
-                        .font(.system(size: 36))
-                        .foregroundColor(Color.secondary.opacity(0.6))
-                        .shadow(radius: 3)
-                        .rotationEffect(Angle(degrees: animation ? 360 : 0))
-                        .onAppear {
-                            withAnimation(.linear(duration: 3.0).repeatForever(autoreverses: false)) {
-                                animation.toggle()
-                            }
-                        }
+            Image(systemName: "gear.circle.fill")
+                .font(.system(size: 100))
+                .frame(width: 320)
+                .fixedSize()
+                .foregroundColor(Color.secondary.opacity(0.6))
+                .shadow(radius: 3)
+                .rotationEffect(Angle(degrees: animation ? 360 : 0))
+                .onAppear {
+                    withAnimation(.linear(duration: 3.0).repeatForever(autoreverses: false)) {
+                        animation.toggle()
+                    }
                 }
-                .padding([.leading, .top], 80)
-            }
-            .frame(width: 320)
-            .fixedSize()
-            .padding([.trailing, .leading], 15)
             
             ProgressView(value: photogrammetryDelegate.sessionProgress, total: 1.0)
                 .frame(width: 320)
@@ -70,9 +56,9 @@ struct ProcessingView: View {
         }
         .onDisappear { photogrammetryAlertInfo.removeAll() }
         .alert(photogrammetryAlertInfo, isPresented: $photogrammetryAlert) {
-            Button(LocalizedStringKey("processing.button.cancel.processing"), role: .cancel) {
+            Button("Cancel", role: .cancel) {
                 photogrammetryDelegate.cancelGeneratingModel()
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { self.applicationViewState = .onSettingsView }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { self.applicationViewState = .onConfigurationView }
             }
         }
     }

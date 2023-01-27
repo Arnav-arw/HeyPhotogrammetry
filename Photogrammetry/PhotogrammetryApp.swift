@@ -1,6 +1,6 @@
 //
-//  HeyPhotogrammetryApp.swift
-//  HeyPhotogrammetry
+//  PhotogrammetryApp.swift
+//  Photogrammetry
 //
 //  Created by Arnav Singhal on 26/01/23.
 //
@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct HeyPhotogrammetryApp: App {
+struct PhotogrammetryApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()

@@ -1,6 +1,6 @@
 //
 //  PhotogrammetryDelegate.swift
-//  HeyPhotogrammetry
+//  Photogrammetry
 //
 //  Created by Arnav Singhal on 26/01/23.
 //
@@ -21,6 +21,7 @@ class PhotogrammetryDelegate: ObservableObject {
     private var session: PhotogrammetrySession?
     private var logger: Logger = Logger(subsystem: "com.unbinilium.photogrammetry", category: "Photogrammetry")
     private var fileManager: FileManager = FileManager()
+    
     public var outputModelUrl: URL?
     public var inputFolderUrl: URL? {
         didSet {
@@ -89,7 +90,7 @@ class PhotogrammetryDelegate: ObservableObject {
     
     public func generateModel(completion: @escaping (_ result: Result<URL, Error>) -> ()) {
         sessionProgress = 0
-        sessionInfo = String(localized: "delegate.generating.3dmodel")
+        sessionInfo = "Generating 3D Model..."
         do {
             try self.checkAvailability()
             self.session = try createSession()
@@ -100,7 +101,9 @@ class PhotogrammetryDelegate: ObservableObject {
                         switch output {
                         case .processingComplete:
                             self.logger.log("Processing is complete")
-                            DispatchQueue.main.async { self.sessionInfo = String(localized: "delegate.processing.complete") }
+                            DispatchQueue.main.async {
+                                self.sessionInfo = "Processing is complete"
+                            }
                             
                         case .requestError(let request, let error):
                             self.logger.error("Request \(String(describing: request)) had an error: \(String(describing: error))")
@@ -117,11 +120,15 @@ class PhotogrammetryDelegate: ObservableObject {
 
                         case .requestProgress(let request, let fractionComplete):
                             self.logger.log("Progress(request = \(String(describing: request)) = \(fractionComplete)")
-                            DispatchQueue.main.async { self.sessionProgress = fractionComplete }
+                            DispatchQueue.main.async {
+                                self.sessionProgress = fractionComplete
+                            }
                             
                         case .inputComplete:
                             self.logger.log("Data ingestion is complete, beginning processing...")
-                            DispatchQueue.main.async { self.sessionInfo = String(localized: "delegate.processing.begin") }
+                            DispatchQueue.main.async {
+                                self.sessionInfo = "Data importing is complete, beginning processing..."
+                            }
                             
                         case .invalidSample(let id, let reason):
                             self.logger.warning("Invalid Sample, id=\(id) reason=\"\(reason)\"")
@@ -131,35 +138,51 @@ class PhotogrammetryDelegate: ObservableObject {
                             
                         case .automaticDownsampling:
                             self.logger.warning("Automatic downsampling was applied")
-                            DispatchQueue.main.async { self.sessionInfo = String(localized: "delegate.automatic.downsampling") }
+                            DispatchQueue.main.async {
+                                self.sessionInfo = "Automatic downsampling was applied"
+                            }
                             
                         case .processingCancelled:
                             self.logger.warning("Request of the session request was cancelled")
-                            DispatchQueue.main.async { self.sessionInfo = String(localized: "delegate.request.cancelled") }
-                            
+                            DispatchQueue.main.async {
+                                self.sessionInfo = "Request of the session request was cancelled"
+                            }
                         @unknown default:
                             self.logger.warning("Unhandled output message: \(String(describing: output))")
                         }
                     }
-                } catch { completion(.failure(error)) }
+                } catch {
+                    completion(.failure(error))
+                }
             }
             withExtendedLifetime((session, waiter)) {
                 do {
                     let request = try self.createRequest()
                     try session.process(requests: [request])
-                } catch { completion(.failure(error)) }
+                } catch {
+                    completion(.failure(error))
+                }
             }
-        } catch { completion(.failure(error)) }
+        } catch {
+            completion(.failure(error))
+        }
     }
     
     private func createSession() throws -> PhotogrammetrySession {
-        guard let inputFolderUrl = inputFolderUrl else { throw PhotogrammetryDelegateError(error: .missingInputFolderUrl) }
-        do { return try PhotogrammetrySession(input: inputFolderUrl, configuration: sessionConfiguration) }
-        catch { throw PhotogrammetryDelegateError(error: .failedCreateSession, comment: String(describing: error)) }
+        guard let inputFolderUrl = inputFolderUrl else {
+            throw PhotogrammetryDelegateError(error: .missingInputFolderUrl)
+        }
+        do {
+            return try PhotogrammetrySession(input: inputFolderUrl, configuration: sessionConfiguration)
+        } catch {
+            throw PhotogrammetryDelegateError(error: .failedCreateSession, comment: String(describing: error))
+        }
     }
     
     private func createRequest() throws -> PhotogrammetrySession.Request {
-        guard let outputModelUrl = outputModelUrl else { throw PhotogrammetryDelegateError(error: .missingOutputModelUrl) }
+        guard let outputModelUrl = outputModelUrl else {
+            throw PhotogrammetryDelegateError(error: .missingOutputModelUrl)
+        }
         return PhotogrammetrySession.Request.modelFile(url: outputModelUrl, detail: sessionRequestDetail)
     }
 }

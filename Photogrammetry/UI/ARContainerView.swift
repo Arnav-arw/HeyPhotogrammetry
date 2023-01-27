@@ -1,6 +1,6 @@
 //
-//  ARContainerView.swift
-//  HeyPhotogrammetry
+//  ARView.swift
+//  Photogrammetry
 //
 //  Created by Arnav Singhal on 27/01/23.
 //

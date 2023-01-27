@@ -1,16 +1,14 @@
 //
 //  PhotogrammetrySession.swift
-//  HeyPhotogrammetry
+//  Photogrammetry
 //
 //  Created by Arnav Singhal on 26/01/23.
 //
 
-import Foundation
 import RealityKit
 
 @available(macOS 12.0, *)
 extension PhotogrammetrySession.Request.Detail {
-    
     public static var allCases = ["Preview", "Reduced", "Medium", "Full", "Raw"]
     
     init(_ detail: String = String()) {
@@ -27,7 +25,6 @@ extension PhotogrammetrySession.Request.Detail {
 
 @available(macOS 12.0, *)
 extension PhotogrammetrySession.Configuration.FeatureSensitivity {
-    
     public static var allCases = ["Normal", "High"]
     
     init(_ featureSensitivity: String = String()) {
@@ -41,7 +38,6 @@ extension PhotogrammetrySession.Configuration.FeatureSensitivity {
 
 @available(macOS 12.0, *)
 extension PhotogrammetrySession.Configuration.SampleOrdering {
-    
     public static var allCases = ["Unordered", "Sequential"]
     
     init(_ sampleOrdering: String = String()) {

@@ -1,11 +1,10 @@
 //
 //  VibrancyView.swift
-//  HeyPhotogrammetry
+//  Photogrammetry
 //
 //  Created by Arnav Singhal on 26/01/23.
 //
 
-import Foundation
 import SwiftUI
 
 struct VibrancyView: NSViewRepresentable {

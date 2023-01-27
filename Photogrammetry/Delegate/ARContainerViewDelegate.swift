@@ -1,6 +1,6 @@
 //
 //  ARContainerViewDelegate.swift
-//  HeyPhotogrammetry
+//  Photogrammetry
 //
 //  Created by Arnav Singhal on 27/01/23.
 //
@@ -15,6 +15,7 @@ class ARContainerViewDelegate: ARView, ObservableObject {
     private var screen: NSScreen = NSScreen()
     private var cameraEntity: PerspectiveCamera = PerspectiveCamera()
     private var cameraAnchor: AnchorEntity = AnchorEntity(world: .zero)
+    
     private var modelEntity: Entity = Entity()
     private var modelAnchor: AnchorEntity = AnchorEntity(world: .zero)
     private var modelRadius: Float = 0 { didSet { self.updateCamera() } }
@@ -58,7 +59,6 @@ class ARContainerViewDelegate: ARView, ObservableObject {
         } catch { completion(.failure(ARContainerViewDelegateError(error: .failedLoadingEntity, comment: String(describing: error)))) }
     }
     
-    
     private func spinModelEntity() {
         if !modelEntitySpin { return }
         DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + screen.minimumRefreshInterval) {
@@ -67,4 +67,3 @@ class ARContainerViewDelegate: ARView, ObservableObject {
         }
     }
 }
-
