@@ -26,10 +26,12 @@ struct ContentView: View {
                     appViewState: $appState,
                     photogrammetryVM: photogrammetryVM
                 )
-//            case .onProcessingView:
-//                <#code#>
+            case .onProcessingView:
+                ProcessingView(
+                    applicationViewState: $appState,
+                    photogrammetryDelegate: photogrammetryVM
+                )
 //            case .onExportView:
-//                <#code#>
             default:
                 InputView(
                     appViewState: $appState,
