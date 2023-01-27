@@ -2,7 +2,7 @@
 Mac app which makes Photogrammetry very easy!
 
 ## Usage
-1. Click 30-60 photos on a subject.
+1. Click 20-60 photos on a subject.
 2. AirDrop them to your Mac.
 3. Cleate a folder with those photos.
 4. Drag that folder into the app.
